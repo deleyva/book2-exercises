@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+{% block content %}
+    <h2>Bienvenidos al blog</h2>
+    <p><a href="{{ url_for('logout') }}">Log out</a></p>
+    <h3>Añado otro post</h3>
+    <form action="{{ url_for('add') }}" method="POST" class="add">
+    <div>
+        <label>Title:</label>
+        <input type="text" name="title">
+    </div>
+    <div>
+        <label>Post:</label>
+        <textarea name="post" cols="40" rows="5"></textarea>
+    </div>
+    <div>
+        <input type="submit" class="button" value="Save">
+    </div>
+    </form>
+    </br>
+    </br>
+    <h3>Posts:</h3>
+    {% for p in posts %}
+        <strong>Title:</strong>{{ p.title }}</br>
+        <strong>Post:</strong>{{ p.post }}</br>
+        </br>
+    {% endfor %}
+{% endblock %}
